@@ -12,18 +12,60 @@ package calificarcomida;
  * entonces debe de mostrar 10 asteriscos
  * si 2 estudiantes eligieron malo entonces debe de agregar 2 asteriscos
  */
+import java.util.Scanner;
+import javax.swing.*;
 public class CalificarComida {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner entrada = new Scanner(System.in);
+        int i = 0;
+        int l = 0;
+        int estudiantes = 0;
         int n = 10;
         int calificacion [] = new int[n];
-
-        for (int i = 0; i < calificacion.length;i++){
-            calificacion[i] += i;
+        int numeroEstudiantes [] = new int [n];
+        int contador = 0;
+        int valor = 0;
+        String resultado = " ";  
+        String resultadoNumEstudiantes  = " "; 
+        //Agregar calificación
+        for(int j = 1;j<calificacion.length;j++){
+            calificacion[j] = j;
+            resultado += "\n"+calificacion[j];
+            numeroEstudiantes[j] = 0;
+            resultadoNumEstudiantes += "\n"+numeroEstudiantes[j];
         }
 
-        System.out.println(calificacion[0]);
+        while(estudiantes >= 0){
+            System.out.println("Digite entre 1 y 10 siendo siendo 1 horrible y 10 bueno");
+            estudiantes = entrada.nextInt();
+            
+            if((estudiantes  < 0 ) || (estudiantes > 10)){
+                System.out.println("Rango incorrecto, digite otro valor");
+                
+            }else{
+            
+                for(int k = 1;k<calificacion.length;k++){
+                    if(estudiantes == calificacion[k]){
+                        System.out.println("El valor es igual"+estudiantes+"\n"+"calificacion:"+calificacion[k]);
+                        contador = valor++;
+                        System.out.println("Arreglo agregado"+numeroEstudiantes[k]);
+                        numeroEstudiantes[estudiantes] = contador;
+                        System.out.println(numeroEstudiantes[estudiantes]);
+                        System.out.println(numeroEstudiantes.length);
+                        
+                        
+                    }
+                    contador = 0;
+                }
+            }
+
+            if(estudiantes == 0){
+                break;
+            }
+            i+=1;
+        }
+        
     }
     
 }
