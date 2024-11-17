@@ -19,13 +19,13 @@ public class CalificarComida {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int i = 0;
-        int l = 0;
         int estudiantes = 0;
         int n = 10;
         int calificacion [] = new int[n];
         int numeroEstudiantes [] = new int [n];
         int contador = 0;
         int valor = 0;
+        int valorExtraido = 0;
         String resultado = " ";  
         String resultadoNumEstudiantes  = " "; 
         //Agregar calificación
@@ -40,23 +40,41 @@ public class CalificarComida {
             System.out.println("Digite entre 1 y 10 siendo siendo 1 horrible y 10 bueno");
             estudiantes = entrada.nextInt();
             
-            if((estudiantes  < 0 ) || (estudiantes > 10)){
+            if(estudiantes  < 0  || estudiantes > 10){
                 System.out.println("Rango incorrecto, digite otro valor");
                 
             }else{
-            
                 for(int k = 1;k<calificacion.length;k++){
                     if(estudiantes == calificacion[k]){
-                        System.out.println("El valor es igual"+estudiantes+"\n"+"calificacion:"+calificacion[k]);
-                        contador = valor++;
-                        System.out.println("Arreglo agregado"+numeroEstudiantes[k]);
-                        numeroEstudiantes[estudiantes] = contador;
-                        System.out.println(numeroEstudiantes[estudiantes]);
-                        System.out.println(numeroEstudiantes.length);
+                        System.out.println("El valor es igual"+estudiantes+"calificacion:"+calificacion[k]);
+                        //contador = valor++;
+                        //System.out.println("Arreglo agregado"+numeroEstudiantes[estudiantes]);
+                        if(numeroEstudiantes[estudiantes] >= 0){
+                            
+                            if(estudiantes == 10){
+                                valorExtraido = numeroEstudiantes[0];
+                                //System.out.println("Valor Contador anterior "+contador);
+                                contador = valorExtraido + 1;
+                                numeroEstudiantes[0] = contador;
+                            
+                            }
+                            valorExtraido = numeroEstudiantes[estudiantes];
+                            System.out.println("ValorExtraido "+valorExtraido);
+                            //System.out.println("Valor Contador anterior "+contador);
+                            contador = valorExtraido + 1;
+                            //System.out.println("Valor Contador nuevo "+contador);
+                            numeroEstudiantes[estudiantes] = contador;
+                            
+                        }else{
+                            System.out.println("Valor de else");
+                            numeroEstudiantes[estudiantes] = contador;
+                        }
+
                         
                         
+
                     }
-                    contador = 0;
+                    contador = 0; 
                 }
             }
 
@@ -64,6 +82,11 @@ public class CalificarComida {
                 break;
             }
             i+=1;
+        }
+        
+        for(int m =0;m<numeroEstudiantes.length;m++){
+            System.out.println("""
+                               Posición #"""+m+" "+numeroEstudiantes[m]);
         }
         
     }
