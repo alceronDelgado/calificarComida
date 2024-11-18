@@ -29,7 +29,7 @@ public class CalificarComida {
         String resultado = " ";  
         String resultadoNumEstudiantes  = " "; 
         //Agregar calificación
-        for(int j = 1;j<calificacion.length;j++){
+        for(int j = 0;j<calificacion.length;j++){
             calificacion[j] = j;
             resultado += "\n"+calificacion[j];
             numeroEstudiantes[j] = 0;
@@ -44,7 +44,7 @@ public class CalificarComida {
                 System.out.println("Rango incorrecto, digite otro valor");
                 
             }else{
-                for(int k = 1;k<calificacion.length;k++){
+                for(int k = 0;k<calificacion.length;k++){
                     if(estudiantes == calificacion[k]){
                         System.out.println("El valor es igual"+estudiantes+"calificacion:"+calificacion[k]);
                         //contador = valor++;
@@ -52,6 +52,7 @@ public class CalificarComida {
                         if(numeroEstudiantes[estudiantes] >= 0){
                             
                             if(estudiantes == 10){
+                                System.out.println("valor de 10");
                                 valorExtraido = numeroEstudiantes[0];
                                 //System.out.println("Valor Contador anterior "+contador);
                                 contador = valorExtraido + 1;
@@ -70,7 +71,7 @@ public class CalificarComida {
                             numeroEstudiantes[estudiantes] = contador;
                         }
 
-                        
+                         
                         
 
                     }
