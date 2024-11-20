@@ -18,24 +18,24 @@ public class CalificarComida {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int i = 0;
         int estudiantes = 0;
-        int n = 10;
+        int i = 0;
+        int n = 11;
         int calificacion [] = new int[n];
         int numeroEstudiantes [] = new int [n];
         int contador = 0;
-        int valor = 0;
         int valorExtraido = 0;
-        String caracter [] = new String[n];
-        String resultado = " ";  
-        String resultadoNumEstudiantes  = " ";
+        String resultado = " ";
         String caracteres = "";
+        String caracter [] = new String[n];
+        String valorExtraidoEstrella = "";
+        
+        
         //Agregar calificación
-        for(int j = 1;j<calificacion.length;j++){
+        for(int j = 0;j<calificacion.length;j++){
             calificacion[j] = j;
             numeroEstudiantes[j] = 0;
-            resultadoNumEstudiantes += "\n"+numeroEstudiantes[j];
-            //resultado += "\n"+"Calificaciones:"+calificacion[j]+" "+"Num Estudiantes: ";
+            caracter[j] = "";
         }
         
         while(estudiantes >= 0){
@@ -46,59 +46,43 @@ public class CalificarComida {
                 System.out.println("Rango incorrecto, digite otro valor");
                 
             }else{
-                for(int k = 1;k<calificacion.length;k++){
+                for(int k = 0;k<calificacion.length;k++){
 
                     if(estudiantes == calificacion[k]){
-                        System.out.println("El valor es igual"+estudiantes+"calificacion:"+calificacion[k]);
-                        //contador = valor++;
-                        //System.out.println("Arreglo agregado"+numeroEstudiantes[estudiantes]);
                         if(numeroEstudiantes[estudiantes] >= 0){
                             
-                            if(estudiantes < 10 || estudiantes == 10){
-                                valorExtraido = numeroEstudiantes[estudiantes];
-                                //System.out.println("Valor Contador anterior "+contador);
-                                contador = valorExtraido + 1;
-                                numeroEstudiantes[estudiantes] = contador;
-                                caracteres+="*";
-                                
-                            }else{
-                                valorExtraido = numeroEstudiantes[estudiantes];
-                                System.out.println("ValorExtraido "+valorExtraido);
-                                //System.out.println("Valor Contador anterior "+contador);
-                                contador = valorExtraido + 1;
-                                //System.out.println("Valor Contador nuevo "+contador);
-                                numeroEstudiantes[estudiantes] = contador;
-                                caracteres+="*";
-                            }
-                            System.out.println(caracteres);
- 
-                        }else{
-                            System.out.println("Valor de else");
+                            valorExtraido = numeroEstudiantes[estudiantes];
+                            contador = valorExtraido + 1;
                             numeroEstudiantes[estudiantes] = contador;
-                            
+
+                            //Valor extraido caracteres
+                            valorExtraidoEstrella = caracter[estudiantes];
+                            caracteres+=valorExtraidoEstrella+"*";
+                            caracter[estudiantes] = caracteres;
+                        }else{
+                            numeroEstudiantes[estudiantes] = contador;
                         }
                     }
                     contador = 0; 
                 }
+                caracteres = "";
             }
 
             if(estudiantes == 0){
                 break;
             }
-            i+=1;
+        i+=1;
         }
         
-        System.out.println(resultado);
-        
-        for(int m =0;m<numeroEstudiantes.length;m++){
-            
-            
+        resultado += "Cantidad de estudiantes: "+i+"\n";
+        for(int m =1;m<numeroEstudiantes.length;m++){
+           
             resultado +="""
-                         CALIFICACIÓN #"""+": "+calificacion[m]+" "+
+                        CALIFICACION #"""+": "+calificacion[m]+""+
                         """
-                         NÚMERO ESTUDIANTE: """+numeroEstudiantes[m]+" "+
+                         NUMERO ESTUDIANTE: """+numeroEstudiantes[m]+" "+
                         """
-                         ÁRBOL: """+"A"+"\n";
+                         ARBOL: """+caracter[m]+"\n";
 
         }
         System.out.println(resultado);
